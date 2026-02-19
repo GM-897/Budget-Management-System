@@ -8,3 +8,7 @@ class User(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+    #User.objects.get(pk=1)
+    #User.objects.create(name="John Doe", email="john@example.com", number="1234567890")
