@@ -7,7 +7,7 @@ from rest_framework.response import Response
 @permission_classes([IsAuthenticated])
 def dashboard(request):
     return Response({
-        "message": "Welcome to Dashboard 🚀",
+        "message": "Welcome to Dashboard, Yahooo 🚀",
         "user": request.user.username
     })
 

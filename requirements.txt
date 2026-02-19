@@ -4,3 +4,5 @@ sqlparse==0.5.5
 typing_extensions==4.15.0
 dj-database-url
 python-dotenv
+djangorestframework
+djangorestframework-simplejwt
