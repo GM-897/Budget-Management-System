@@ -15,6 +15,7 @@ SECRET_KEY = 'django-insecure-g%q22==r+jpg2t3+4m1nsm$^kz6g)c%6lm0i13kbkc!*u7*(77
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'BmsApp.User'
 
 
 # Application definition
