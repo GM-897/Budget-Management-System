@@ -6,3 +6,5 @@ dj-database-url
 python-dotenv
 djangorestframework
 djangorestframework-simplejwt
+boto3
+python-decouple

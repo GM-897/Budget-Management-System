@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload & Zip</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 50px auto; }
+        form { background: #f0f0f0; padding: 20px; border-radius: 5px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        #status { margin-top: 10px; padding: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>1. Upload File to S3</h2>
+    <form action="{% url 'handle_upload' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="my_file" required>
+        <button type="submit">Upload to S3</button>
+    </form>
+
+    <hr>
+
+    <h2>2. Zip and Download</h2>
+    <button id="zipBtn">Create Zip of All Uploads</button>
+    <p id="status"></p>
+
+    <script>
+        document.getElementById('zipBtn').onclick = function() {
+            const status = document.getElementById('status');
+            status.innerText = "Zipping... please wait.";
+
+            fetch("{% url 'trigger_zip_process' %}")
+            .then(res => res.json())
+            .then(data => {
+                if(data.download_url) {
+                    window.location.href = data.download_url;
+                    status.innerText = "Download started!";
+                } else {
+                    status.innerText = "Error: " + (data.error || "Failed to zip files.");
+                }
+            })
+            .catch(err => {
+                status.innerText = "Error: " + err.message;
+            });
+        };
+    </script>
+</body>
+</html>

@@ -8,4 +8,7 @@ urlpatterns = [
     path('budget/', views.budget, name='budget'),
     path('expenses/', views.expenses, name='expenses'),
     path('department/', views.department, name='department'),
+    path('upload-page/', views.upload_file, name='upload_page'),
+    path('upload/', views.handle_upload, name='handle_upload'),
+    path('trigger-zip/', views.trigger_zip_repsonse, name='trigger_zip_process'),
 ]

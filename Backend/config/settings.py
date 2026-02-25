@@ -17,7 +17,13 @@ DEBUG = True
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'BmsApp.User'
 
+#s3 upload and lambda
+from decouple import config
 
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
 # Application definition
 
 INSTALLED_APPS = [
